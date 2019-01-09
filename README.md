@@ -1,6 +1,6 @@
 ## katalon-tags-plugin
 
-The main purpose is supporting Katalon - JIRA integration:
+The main purpose is to support test case management by tags:
 
 - Manage and search test cases by tags.
 - Automatically added jira-integration tag when creating jira-integrated test cases.
