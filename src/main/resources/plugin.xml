@@ -2,17 +2,17 @@
 	<extension
             point="com.katalon.platform.extensions">
         <point
-                id="thanhto.virtualtestsuiteplugin.VirtualTestSuiteEventListenerInitializer"
+                id="thanhto.tagsplugin.TagsEventListenerInitializer"
                 extensionPointId="com.katalon.platform.api.extension.eventListener"
-                implementationClass="com.katalon.plugin.virtual_test_suite.VirtualTestSuiteEventListenerInitializer">
+                implementationClass="com.katalon.plugin.tags.TagsEventListenerInitializer">
         </point>
     </extension>
     <extension
             point="com.katalon.platform.extensions">
         <point
-                id="thanhto.virtualtestsuiteplugin.VirtualTestSuitePluginActivationListener"
+                id="thanhto.tagsplugin.TagsPluginActivationListener"
                 extensionPointId="com.katalon.platform.api.extension.pluginActivationListener"
-                implementationClass="com.katalon.plugin.virtual_test_suite.VirtualTestSuitePluginActivationListener">
+                implementationClass="com.katalon.plugin.tags.TagsPluginActivationListener">
         </point>
     </extension>    
 </plugin>

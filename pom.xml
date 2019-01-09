@@ -5,7 +5,7 @@
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.katalon</groupId>
-	<artifactId>katalon-studio-virtual-test-suite</artifactId>
+	<artifactId>katalon-studio-tag</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>bundle</packaging>
 
