@@ -1,0 +1,18 @@
+<plugin>
+	<extension
+            point="com.katalon.platform.extensions">
+        <point
+                id="thanhto.virtualtestsuiteplugin.VirtualTestSuiteEventListenerInitializer"
+                extensionPointId="com.katalon.platform.api.extension.eventListener"
+                implementationClass="com.katalon.plugin.virtual_test_suite.VirtualTestSuiteEventListenerInitializer">
+        </point>
+    </extension>
+    <extension
+            point="com.katalon.platform.extensions">
+        <point
+                id="thanhto.virtualtestsuiteplugin.VirtualTestSuitePluginActivationListener"
+                extensionPointId="com.katalon.platform.api.extension.pluginActivationListener"
+                implementationClass="com.katalon.plugin.virtual_test_suite.VirtualTestSuitePluginActivationListener">
+        </point>
+    </extension>    
+</plugin>
