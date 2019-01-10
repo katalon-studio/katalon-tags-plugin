@@ -7,6 +7,6 @@ public class TagsPluginActivationListener implements PluginActivationListener {
 
 	@Override
 	public void afterActivation(Plugin plugin) {
-
+		System.out.println(plugin.getPluginId() + " is installed");
 	}
 }
