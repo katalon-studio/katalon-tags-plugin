@@ -77,7 +77,7 @@
 			<version>1.0.0</version>
 			<scope>system</scope>
 			<systemPath>
-                ${basedir}/thirdparty/com.katalon.platform-1.0.3.jar
+                ${basedir}/thirdparty/com.katalon.platform-1.0.4.jar
             </systemPath>
 		</dependency>
 		<dependency>

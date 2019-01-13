@@ -1,6 +1,6 @@
 package com.katalon.plugin.tags.entity;
 
-import com.katalon.platform.api.model.PluginConsoleOption;
+import com.katalon.platform.api.console.PluginConsoleOption;
 
 public abstract class AbstractConsoleOption<T> implements PluginConsoleOption<T> {
 
