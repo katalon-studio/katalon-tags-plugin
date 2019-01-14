@@ -17,6 +17,11 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 		public String getOption() {
 			return TagsConstants.TAGS_CONSOLE_OPTION;
 		}
+		
+		@Override
+		public boolean isRequired(){
+			return true;
+		}
 	};
 
 	@Override
@@ -26,8 +31,8 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 
 	@Override
 	public void onConsoleOptionDetected(com.katalon.platform.api.console.PluginConsoleOption<?> arg0) {
-		if (arg0.getOption().equals(TagsConstants.TAGS_CONSOLE_OPTION)) {
-			System.out.println(TagsConstants.TAGS_CONSOLE_OPTION + " is recognized with value " + arg0.getValue());
+		if (arg0.getOption().equals(tagConsoleOption.getOption())) {
+			tagConsoleOption.setValue((String) arg0.getValue());
 		}
 	}
 
@@ -35,8 +40,11 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 	public List<TestCaseEntity> onPreExecution(List<TestCaseEntity> arg0) {
 		List<TestCaseEntity> filteredTestCases = new ArrayList<>();
 		arg0.stream().forEach(a -> {
-			if(Arrays.asList(a.getTags().split(",")).contains(tagConsoleOption.getOption())){
+			if(Arrays.asList(a.getTags().split(",")).contains(tagConsoleOption.getValue())){
+				System.out.println(a.getId() + " is a test case to be run");
 				filteredTestCases.add(a);
+			} else {
+				System.out.println(a.getId() + " is filtered out ");
 			}
 		});
 		return filteredTestCases;
