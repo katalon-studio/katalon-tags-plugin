@@ -40,7 +40,7 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 	public List<TestCaseEntity> onPreExecution(List<TestCaseEntity> arg0) {
 		List<TestCaseEntity> filteredTestCases = new ArrayList<>();
 		arg0.stream().forEach(a -> {
-			if(Arrays.asList(a.getTags().split(",")).contains(tagConsoleOption.getValue())){
+			if(Arrays.asList(a.getTags().split(",")).containsAll(Arrays.asList(tagConsoleOption.getValue().toString().split(",")))){
 				System.out.println(a.getId() + " is a test case to be run");
 				filteredTestCases.add(a);
 			} else {
