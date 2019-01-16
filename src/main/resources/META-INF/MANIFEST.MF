@@ -1,4 +1,4 @@
-Bundle-SymbolicName: com.katalon.katalon-studio-virtual-test-suite;singleton:=true
+Bundle-SymbolicName: com.katalon.tags-plugin;singleton:=true
 Require-Bundle: com.katalon.platform,
  org.eclipse.e4.core.di,
  org.eclipse.e4.core.contexts,
@@ -9,8 +9,8 @@ Require-Bundle: com.katalon.platform,
  org.eclipse.swt,
  org.eclipse.jface
 Bundle-ActivationPolicy: lazy
-Export-Package: com.katalon.plugin.virtual_test_suite
+Export-Package: com.katalon.plugin.tags
 Bundle-ClassPath: .
-Bundle-Name: Katalon Studio Virtual Test Suite
+Bundle-Name: Katalon Studio Tags Plugin
 Bundle-Version: 1.0
 Bundle-Vendor: Katalon LLC

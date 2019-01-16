@@ -14,5 +14,13 @@
                 extensionPointId="com.katalon.platform.api.extension.pluginActivationListener"
                 implementationClass="com.katalon.plugin.tags.TagsPluginActivationListener">
         </point>
-    </extension>    
+    </extension> 
+        <extension
+            point="com.katalon.platform.extensions">
+        <point
+                id="thanhto.tagsplugin.TagsLauncherOptionParserDescription"
+                extensionPointId="com.katalon.platform.api.extension.launcherOptionParserDescription"
+                implementationClass="com.katalon.plugin.tags.TagsLauncherOptionParserDescription">
+        </point>
+    </extension>     
 </plugin>
