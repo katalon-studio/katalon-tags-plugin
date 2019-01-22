@@ -20,7 +20,7 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 		
 		@Override
 		public boolean isRequired(){
-			return true;
+			return false;
 		}
 	};
 
