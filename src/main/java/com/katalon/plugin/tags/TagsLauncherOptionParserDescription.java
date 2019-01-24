@@ -3,12 +3,17 @@ package com.katalon.plugin.tags;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+import org.apache.commons.lang3.StringUtils;
 
 import com.katalon.platform.api.console.PluginConsoleOption;
 import com.katalon.platform.api.extension.LauncherOptionParserDescription;
 import com.katalon.platform.api.model.TestCaseEntity;
 import com.katalon.plugin.tags.constants.TagsConstants;
 import com.katalon.plugin.tags.entity.StringConsoleOption;
+import com.katalon.plugin.tags.util.EntityTagUtil;
 
 public class TagsLauncherOptionParserDescription implements LauncherOptionParserDescription {
 
@@ -40,7 +45,7 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 	public List<TestCaseEntity> onPreExecution(List<TestCaseEntity> arg0) {
 		List<TestCaseEntity> filteredTestCases = new ArrayList<>();
 		arg0.stream().forEach(a -> {
-			if(Arrays.asList(a.getTags().split(",")).containsAll(Arrays.asList(tagConsoleOption.getValue().toString().split(",")))){
+			if(hasTags(a.getTags(), tagConsoleOption.getValue().toString())){
 				System.out.println(a.getId() + " is a test case to be run");
 				filteredTestCases.add(a);
 			} else {
@@ -48,6 +53,27 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 			}
 		});
 		return filteredTestCases;
+	}
+	
+	private boolean hasTags(String entityTagValues, String searchTagValues){
+		
+        if (StringUtils.isBlank(searchTagValues)) {
+            return true;
+        }
+        
+        if (StringUtils.isBlank(entityTagValues)) {
+            return false;
+        }
+        
+        Set<String> searchTags = EntityTagUtil.parse(searchTagValues).stream()
+                .map(tag -> tag.toLowerCase())
+                .collect(Collectors.toSet());
+        
+        Set<String> entityTags = EntityTagUtil.parse(entityTagValues).stream()
+                .map(tag -> tag.toLowerCase())
+                .collect(Collectors.toSet());
+        
+        return entityTags.containsAll(searchTags);
 	}
 
 }
