@@ -44,14 +44,16 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 	@Override
 	public List<TestCaseEntity> onPreExecution(List<TestCaseEntity> arg0) {
 		List<TestCaseEntity> filteredTestCases = new ArrayList<>();
-		arg0.stream().forEach(a -> {
-			if(hasTags(a.getTags(), tagConsoleOption.getValue().toString())){
-				System.out.println(a.getId() + " is a test case to be run");
-				filteredTestCases.add(a);
-			} else {
-				System.out.println(a.getId() + " is filtered out ");
-			}
-		});
+		if(tagConsoleOption.getValue() != null){
+			arg0.stream().forEach(a -> {
+				if(hasTags(a.getTags(), tagConsoleOption.getValue().toString())){
+					System.out.println(a.getId() + " is a test case to be run");
+					filteredTestCases.add(a);
+				} else {
+					System.out.println(a.getId() + " is filtered out ");
+				}
+			});
+		}
 		return filteredTestCases;
 	}
 	
