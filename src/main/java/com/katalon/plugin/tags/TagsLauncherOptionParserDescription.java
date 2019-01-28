@@ -22,9 +22,9 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 		public String getOption() {
 			return TagsConstants.TAGS_CONSOLE_OPTION;
 		}
-		
+
 		@Override
-		public boolean isRequired(){
+		public boolean isRequired() {
 			return false;
 		}
 	};
@@ -44,38 +44,38 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 	@Override
 	public List<TestCaseEntity> onPreExecution(List<TestCaseEntity> arg0) {
 		List<TestCaseEntity> filteredTestCases = new ArrayList<>();
-		if(tagConsoleOption.getValue() != null){
-			arg0.stream().forEach(a -> {
-				if(hasTags(a.getTags(), tagConsoleOption.getValue().toString())){
-					System.out.println(a.getId() + " is a test case to be run");
-					filteredTestCases.add(a);
-				} else {
-					System.out.println(a.getId() + " is filtered out ");
-				}
-			});
+		if (tagConsoleOption.getValue() == null) {
+			return arg0;
 		}
+		arg0.stream().forEach(a -> {
+			if (hasTags(a.getTags(), tagConsoleOption.getValue().toString())) {
+				System.out.println(a.getId() + " is a test case to be run");
+				filteredTestCases.add(a);
+			} else {
+				System.out.println(a.getId() + " is filtered out ");
+			}
+		});
+
 		return filteredTestCases;
 	}
-	
-	private boolean hasTags(String entityTagValues, String searchTagValues){
-		
-        if (StringUtils.isBlank(searchTagValues)) {
-            return true;
-        }
-        
-        if (StringUtils.isBlank(entityTagValues)) {
-            return false;
-        }
-        
-        Set<String> searchTags = EntityTagUtil.parse(searchTagValues).stream()
-                .map(tag -> tag.toLowerCase())
-                .collect(Collectors.toSet());
-        
-        Set<String> entityTags = EntityTagUtil.parse(entityTagValues).stream()
-                .map(tag -> tag.toLowerCase())
-                .collect(Collectors.toSet());
-        
-        return entityTags.containsAll(searchTags);
+
+	private boolean hasTags(String entityTagValues, String searchTagValues) {
+
+		if (StringUtils.isBlank(searchTagValues)) {
+			return true;
+		}
+
+		if (StringUtils.isBlank(entityTagValues)) {
+			return false;
+		}
+
+		Set<String> searchTags = EntityTagUtil.parse(searchTagValues).stream().map(tag -> tag.toLowerCase())
+				.collect(Collectors.toSet());
+
+		Set<String> entityTags = EntityTagUtil.parse(entityTagValues).stream().map(tag -> tag.toLowerCase())
+				.collect(Collectors.toSet());
+
+		return entityTags.containsAll(searchTags);
 	}
 
 }
