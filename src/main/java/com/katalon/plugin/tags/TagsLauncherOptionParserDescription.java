@@ -47,6 +47,7 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 		if (tagConsoleOption.getValue() == null) {
 			return arg0;
 		}
+		System.out.println("----------------- TEST CASE TAGS PLUGIN START FILTERING -----------------");
 		arg0.stream().forEach(a -> {
 			if (hasTags(a.getTags(), tagConsoleOption.getValue().toString())) {
 				System.out.println(a.getId() + " is a test case to be run");
@@ -55,7 +56,7 @@ public class TagsLauncherOptionParserDescription implements LauncherOptionParser
 				System.out.println(a.getId() + " is filtered out ");
 			}
 		});
-
+		System.out.println("----------------- TEST CASE TAGS PLUGIN FINISH FILTERING -----------------");
 		return filteredTestCases;
 	}
 
