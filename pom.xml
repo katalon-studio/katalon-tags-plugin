@@ -74,10 +74,10 @@
 		<dependency>
 			<groupId>com.katalon</groupId>
 			<artifactId>com.katalon.platform</artifactId>
-			<version>1.0.0</version>
+			<version>1.0.7</version>
 			<scope>system</scope>
 			<systemPath>
-                ${basedir}/thirdparty/com.katalon.platform-1.0.4.jar
+                ${basedir}/thirdparty/com.katalon.platform-1.0.7.jar
             </systemPath>
 		</dependency>
 		<dependency>
