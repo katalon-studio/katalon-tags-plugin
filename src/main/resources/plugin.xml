@@ -22,5 +22,13 @@
                 extensionPointId="com.katalon.platform.api.extension.launcherOptionParserDescription"
                 implementationClass="com.katalon.plugin.tags.TagsLauncherOptionParserDescription">
         </point>
-    </extension>     
+    </extension>
+    <extension
+            point="com.katalon.platform.extensions">
+        <point
+                id="com.katalon.plugin.tags.AdvancedTagQueryingTestSuiteImpl"
+                extensionPointId="com.katalon.platform.api.extension.dynamicQueryingTestSuiteDescription"
+                implementationClass="com.katalon.plugin.tags.AdvancedTagQueryingTestSuiteImpl">
+        </point>
+    </extension>
 </plugin>
