@@ -26,7 +26,9 @@ import com.katalon.plugin.tags.util.EntityTagUtil;
 
 public class AdvancedTagQueryingTestSuiteImpl implements DynamicQueryingTestSuiteDescription {
 
-    private static final List<String> DEFAULT_KEYWORDS = Arrays.asList("tags");
+    private static final List<String> DEFAULT_KEYWORDS = Arrays.asList("ids", "id", "name", "tag", "comment", "description", "tags");
+    
+    private static final String CONTENT_DELIMITER = ",";
 
     private FolderController folderController = ApplicationManager.getInstance().getControllerManager()
             .getController(FolderController.class);
@@ -111,11 +113,32 @@ public class AdvancedTagQueryingTestSuiteImpl implements DynamicQueryingTestSuit
             return false;
         }
         switch (keyword) {
+            case "ids":
+                return textContainsEntityId(text.toLowerCase(), fileEntity);
+            case "id":
+                return StringUtils.equalsIgnoreCase(fileEntity.getId(), text)
+                        || StringUtils.startsWithIgnoreCase(fileEntity.getId(), text + "/");
+            case "name":
+                return StringUtils.containsIgnoreCase(fileEntity.getName(), text);
+            case "tag":
+                return StringUtils.containsIgnoreCase(fileEntity.getTags(), text);
+            case "description":
+                return StringUtils.containsIgnoreCase(fileEntity.getDescription(), text);
             case "tags":
                 return hasTags(fileEntity, text);
             default:
                 return false;
         }
+    }
+    
+    private boolean textContainsEntityId(String text, TestCaseEntity testCase) {
+        return Arrays.asList(text.split(CONTENT_DELIMITER))
+                .stream()
+                .map(a -> a.trim())
+                .filter(a -> StringUtils.equalsIgnoreCase(testCase.getId(), a)
+                        || StringUtils.startsWithIgnoreCase(testCase.getId(), a + "/"))
+                .findAny()
+                .isPresent();
     }
 
     private boolean hasTags(TestCaseEntity testCase, String searchTagValues) {
