@@ -4,6 +4,7 @@
 #Eclipse
 bin/**
 .settings
+.classpath
 
 #Maven
 target/**
