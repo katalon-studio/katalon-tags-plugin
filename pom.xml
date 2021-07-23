@@ -38,7 +38,7 @@
 		<dependency>
 			<groupId>org.eclipse.platform</groupId>
 			<artifactId>org.eclipse.jface</artifactId>
-			<version>3.12.2</version>
+			<version>3.22.200</version>
 			<exclusions>
 				<exclusion>
 					<groupId>org.eclipse.platform</groupId>
@@ -138,7 +138,7 @@
 				<configuration>
 					<instructions>
 						<Export-Package>com.katalon.plugin.virtual_test_suite</Export-Package>
-						<Import-Package></Import-Package>
+						<Import-Package/>
 						<_include>src/main/resources/META-INF/MANIFEST.MF</_include>
 						<_noee>true</_noee>
 					</instructions>
